@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../FTPService/FTPService.h"
+#include "../FTPService/Ftp.h"
 
 int main()
 {
