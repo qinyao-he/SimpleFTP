@@ -24,13 +24,7 @@
     <ClInclude Include="FtpClient.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="FtpWorkerAbstract.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="FtpWorkerClient.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="FtpWorkerServer.h">
+    <ClInclude Include="FtpServerWorker.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,13 +38,7 @@
     <ClCompile Include="FtpClient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="FtpWorkerAbstract.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="FtpWorkerClient.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="FtpWorkerServer.cpp">
+    <ClCompile Include="FtpServerWorker.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
