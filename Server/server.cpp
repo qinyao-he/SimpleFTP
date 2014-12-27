@@ -1,8 +1,8 @@
 #include <iostream>
-#include "../FTPService/Ftp.h"
+#include "../FTPService/FtpServer.h"
 
 int main()
 {
-	Ftp ftp;
+	FtpServer server;
 	return 0;
 }

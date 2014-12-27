@@ -12,9 +12,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FtpAbstract.h" />
+    <ClInclude Include="FtpClient.h" />
+    <ClInclude Include="FtpServer.h" />
+    <ClInclude Include="FtpWorkerAbstract.h" />
+    <ClInclude Include="FtpWorkerClient.h" />
+    <ClInclude Include="FtpWorkerServer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FtpAbstract.cpp" />
+    <ClCompile Include="FtpClient.cpp" />
+    <ClCompile Include="FtpServer.cpp" />
+    <ClCompile Include="FtpWorkerAbstract.cpp" />
+    <ClCompile Include="FtpWorkerClient.cpp" />
+    <ClCompile Include="FtpWorkerServer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{01AFE039-15DC-496A-AE7F-1E68C5E07724}</ProjectGuid>

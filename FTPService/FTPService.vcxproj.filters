@@ -18,9 +18,39 @@
     <ClInclude Include="FtpAbstract.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="FtpServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FtpClient.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FtpWorkerAbstract.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FtpWorkerClient.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FtpWorkerServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FtpAbstract.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FtpServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FtpClient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FtpWorkerAbstract.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FtpWorkerClient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FtpWorkerServer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
