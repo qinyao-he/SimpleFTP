@@ -2,15 +2,21 @@
 #define TCPSERVER_H
 
 #include "TcpAbstract.h"
+#include "TcpSocket.h"
+#include <WinSock2.h>
 
 
 class TcpServer : public TcpAbstract
 {
+private:
+	SOCKET server_socket;
+
 public:
 	TcpServer();
 	~TcpServer();
 
-	void listen();
+	void listen(int port);
+	TcpSocket accept();
 };
 
 

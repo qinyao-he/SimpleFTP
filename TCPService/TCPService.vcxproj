@@ -13,10 +13,12 @@
   <ItemGroup>
     <ClInclude Include="TcpAbstract.h" />
     <ClInclude Include="TcpServer.h" />
+    <ClInclude Include="TcpSocket.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TcpAbstract.cpp" />
     <ClCompile Include="TcpServer.cpp" />
+    <ClCompile Include="TcpSocket.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{66801448-F1FC-4452-B015-A147424C1E75}</ProjectGuid>

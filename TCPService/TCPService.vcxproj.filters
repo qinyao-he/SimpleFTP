@@ -21,12 +21,18 @@
     <ClInclude Include="TcpServer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="TcpSocket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TcpAbstract.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="TcpServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpSocket.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
