@@ -1,4 +1,4 @@
-#include "FtpServerWorker.h"
+﻿#include "FtpServerWorker.h"
 
 
 FtpServerWorker::FtpServerWorker()

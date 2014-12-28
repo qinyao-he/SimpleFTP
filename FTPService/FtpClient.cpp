@@ -1,4 +1,4 @@
-#include "FtpClient.h"
+﻿#include "FtpClient.h"
 
 
 FtpClient::FtpClient()

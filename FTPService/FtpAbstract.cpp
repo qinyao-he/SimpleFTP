@@ -1,4 +1,4 @@
-#include "FtpAbstract.h"
+﻿#include "FtpAbstract.h"
 
 
 FtpAbstract::FtpAbstract()

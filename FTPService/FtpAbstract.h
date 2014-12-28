@@ -1,4 +1,4 @@
-#ifndef FTPABSTACT_H
+﻿#ifndef FTPABSTACT_H
 #define FTPABSTRACT_H
 
 #include "../TCPService/TcpServer.h"

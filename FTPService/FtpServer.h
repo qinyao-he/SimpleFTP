@@ -1,4 +1,4 @@
-#ifndef FTPSERVER_H
+﻿#ifndef FTPSERVER_H
 #define FTPSERVER_H
 
 #include "FtpAbstract.h"
