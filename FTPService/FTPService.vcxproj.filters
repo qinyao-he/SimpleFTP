@@ -30,6 +30,9 @@
     <ClInclude Include="FtpProtocols.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="FtpSocket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FtpAbstract.cpp">
@@ -45,6 +48,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="FtpProtocols.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FtpSocket.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -4,5 +4,6 @@
 int main()
 {
 	FtpClient client;
+	client.connect("127.0.0.1");
 	return 0;
 }

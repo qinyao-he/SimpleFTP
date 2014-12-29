@@ -20,5 +20,6 @@ void FtpServer::listen(int port)
 	while (true) {
 		TcpSocket client_socket = tcp_server.accept();
 		std::thread worker(FtpServerWorker(), client_socket);
+		worker.join();
 	}
 }

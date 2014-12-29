@@ -1,8 +1,10 @@
 #ifndef FTPPROTOCOLS_H
 #define FTPPROTOCOLS_H
 
+#include <vector>
 
-struct FtpCommand
+
+struct FtpCommand_t
 {
 	int command_type;
 	int data_length;
@@ -10,10 +12,22 @@ struct FtpCommand
 };
 
 
-struct FtpData
+struct FtpData_t
 {
 	int data_length;
 	char data[0];
+};
+
+struct FtpCommand
+{
+	int command_type;
+	std::vector<char> data;
+};
+
+
+struct FtpData
+{
+	std::vector<char> data;
 };
 
 
@@ -32,6 +46,9 @@ public:
 	static const int CD;
 	static const int HELP;
 	static const int QUIT;
+
+	static FtpCommand to_ftp_command(std::vector<char> buff);
+	static FtpData to_ftp_data(std::vector<char> buff);
 };
 
 

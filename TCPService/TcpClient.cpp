@@ -1,4 +1,4 @@
-#include "TcpClient.h"
+﻿#include "TcpClient.h"
 
 
 TcpClient::TcpClient()
@@ -21,5 +21,5 @@ TcpSocket TcpClient::connect(std::string server_addr, int port)
 	server_socket_addr.sin_port = htons(port);
 	::connect(socket, (SOCKADDR*)&server_socket_addr, sizeof(SOCKADDR));
 
-	return TcpSocket(socket);
+	return TcpSocket(socket, server_socket_addr);
 }

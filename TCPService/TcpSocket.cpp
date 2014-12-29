@@ -1,14 +1,26 @@
 ﻿#include "TcpSocket.h"
 
 
-TcpSocket::TcpSocket(SOCKET socket)
+TcpSocket::TcpSocket()
+{
+}
+
+
+TcpSocket::TcpSocket(SOCKET socket, SOCKADDR_IN client_addr)
 {
 	m_socket = socket;
+	m_client_addr = client_addr;
 }
 
 
 TcpSocket::~TcpSocket()
 {
+}
+
+
+std::string TcpSocket::get_remote_ip()
+{
+	return std::string(inet_ntoa(m_client_addr.sin_addr));
 }
 
 

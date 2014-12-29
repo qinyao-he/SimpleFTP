@@ -16,6 +16,7 @@
     <ClInclude Include="FtpProtocols.h" />
     <ClInclude Include="FtpServer.h" />
     <ClInclude Include="FtpServerWorker.h" />
+    <ClInclude Include="FtpSocket.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FtpAbstract.cpp" />
@@ -23,6 +24,7 @@
     <ClCompile Include="FtpProtocols.cpp" />
     <ClCompile Include="FtpServer.cpp" />
     <ClCompile Include="FtpServerWorker.cpp" />
+    <ClCompile Include="FtpSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TCPService\TCPService.vcxproj">
