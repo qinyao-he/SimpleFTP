@@ -20,8 +20,8 @@ public:
 
 	void connect(std::string server_addr);
 
-	void get();
-	void put();
+	void get(std::string remote_file, std::string local_file);
+	void put(std::string local_file, std::string remote_file);
 	void pwd();
 	void cd();
 	void dir();

@@ -27,7 +27,8 @@ void FtpSocket::send_command(FtpCommand& command)
 	FtpCommand_t* _command_t = (FtpCommand_t*)malloc(sizeof(_command_t) + command.data.size());
 	_command_t->command_type = command.command_type;
 	_command_t->data_length = command.data.size();
-	memcpy(_command_t->data, &command.data[0], _command_t->data_length);
+	if (_command_t->data_length > 0)
+		memcpy(_command_t->data, &command.data[0], _command_t->data_length);
 	std::vector<char> buff((char*)_command_t, _command_t->data + _command_t->data_length);
 	send(buff);
 }
@@ -38,7 +39,8 @@ void FtpSocket::send_data(FtpData& data)
 	FtpData_t* _data_t = (FtpData_t*)malloc(sizeof(_data_t) + data.data.size());
 	_data_t->data_type = data.data_type;
 	_data_t->data_length = data.data.size();
-	memcpy(_data_t->data, &data.data[0], _data_t->data_length);
+	if (_data_t->data_length > 0)
+		memcpy(_data_t->data, &data.data[0], _data_t->data_length);
 	std::vector<char> buff((char*)_data_t, _data_t->data + _data_t->data_length);
 	send(buff);
 }
@@ -65,7 +67,7 @@ FtpCommand FtpSocket::recv_command()
 	return command;
 }
 
-
+ 
 FtpData FtpSocket::recv_data()
 {
 	std::vector<char> buff;
@@ -74,15 +76,15 @@ FtpData FtpSocket::recv_data()
 		data_buff.insert(data_buff.end(), buff.begin(), buff.end());
 	}
 	int len;
-	memcpy(&len, &command_buff[sizeof(int)], sizeof(int));
+	memcpy(&len, &data_buff[sizeof(int)], sizeof(int));
 	while (data_buff.size() < 2 * sizeof(int) + len) {
 		recv(buff);
 		data_buff.insert(data_buff.end(), buff.begin(), buff.end());
 	}
 	FtpData data;
 	memcpy(&data.data_type, &data_buff[0], sizeof(int));
-	data.data.insert(data.data.begin(), data_buff[2 * sizeof(int)], 
-					 data_buff[2 * sizeof(int) + len]);
+	data.data.insert(data.data.end(), data_buff.begin() + 2 * sizeof(int), 
+					 data_buff.begin() + 2 * sizeof(int) + len);
 	data_buff.erase(data_buff.begin(), data_buff.begin() + 2 * sizeof(int) + len);
 	return data;
 }

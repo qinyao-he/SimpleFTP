@@ -34,6 +34,8 @@ void TcpSocket::recv(std::vector<char>& recv_data)
 {
 	recv_data.resize(BUFF_LEN);
 	int recv_len = ::recv(m_socket, &recv_data[0], BUFF_LEN, 0);
+	if (recv_len == -1)
+		throw -1;
 	recv_data.resize(recv_len);
 }
 

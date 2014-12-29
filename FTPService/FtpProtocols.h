@@ -49,7 +49,7 @@ public:
 	static const int HELP;
 	static const int QUIT;
 	static const int SUCCESS;
-	static const int ERROR;
+	static const int FAIL;
 };
 
 

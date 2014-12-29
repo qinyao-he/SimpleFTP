@@ -14,4 +14,4 @@ const int FtpProtocols::CD = FtpProtocols::DIR + 1;
 const int FtpProtocols::HELP = FtpProtocols::CD + 1;
 const int FtpProtocols::QUIT = FtpProtocols::HELP + 1;
 const int FtpProtocols::SUCCESS = FtpProtocols::QUIT + 1;
-const int FtpProtocols::ERROR = FtpProtocols::SUCCESS + 1;
+const int FtpProtocols::FAIL = FtpProtocols::SUCCESS + 1;

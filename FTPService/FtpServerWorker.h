@@ -8,6 +8,10 @@
 
 class FtpServerWorker
 {
+private:
+	bool read_file(std::string& file_path, std::vector<char>& data);
+	bool write_file(std::string& file_path, std::vector<char>& data);
+
 public:
 	FtpServerWorker();
 	~FtpServerWorker();
