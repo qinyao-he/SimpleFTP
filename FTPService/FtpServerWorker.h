@@ -3,6 +3,7 @@
 
 #include "../TCPService/TcpSocket.h"
 #include "../TCPService/TcpClient.h"
+#include "FtpSocket.h"
 
 
 class FtpServerWorker
@@ -11,7 +12,7 @@ public:
 	FtpServerWorker();
 	~FtpServerWorker();
 
-	void operator () (TcpSocket socket);
+	void operator () (FtpSocket socket);
 };
 
 

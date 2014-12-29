@@ -13,7 +13,7 @@ FtpServerWorker::~FtpServerWorker()
 }
 
 
-void FtpServerWorker::operator() (TcpSocket socket)
+void FtpServerWorker::operator() (FtpSocket socket)
 {
 	std::cout << "Client connected from: " + socket.get_remote_ip() << std::endl;
 	std::vector<char> buff;

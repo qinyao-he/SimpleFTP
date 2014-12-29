@@ -2,9 +2,10 @@
 #define FTPSERVER_H
 
 #include "FtpAbstract.h"
+#include "FtpSocket.h"
 
 
-class FtpServer : FtpAbstract
+class FtpServer : public FtpAbstract
 {
 private:
 	TcpServer tcp_server;

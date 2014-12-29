@@ -2,23 +2,23 @@
 #define FTPCLIENT_H
 
 #include "FtpAbstract.h"
+#include "FtpSocket.h"
 #include <string>
 
 
-class FtpClient : FtpAbstract
+class FtpClient : public FtpAbstract
 {
 private:
 	TcpClient ftp_command_client;
 	TcpServer ftp_data_server;
-	TcpSocket command_socket;
-	TcpSocket data_socket;
+	FtpSocket command_socket;
+	FtpSocket data_socket;
 
 public:
 	FtpClient();
 	~FtpClient();
 
 	void connect(std::string server_addr);
-	void send_command(FtpCommand command);
 };
 
 
