@@ -46,9 +46,6 @@ public:
 	static const int CD;
 	static const int HELP;
 	static const int QUIT;
-
-	static FtpCommand to_ftp_command(std::vector<char> buff);
-	static FtpData to_ftp_data(std::vector<char> buff);
 };
 
 

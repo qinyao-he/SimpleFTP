@@ -13,6 +13,7 @@ private:
 	std::vector<char> data_buff;
 
 public:
+	FtpSocket();
 	FtpSocket(SOCKET socket, SOCKADDR_IN client_addr);
 	FtpSocket(TcpSocket socket);
 	~FtpSocket();

@@ -19,6 +19,13 @@ public:
 	~FtpClient();
 
 	void connect(std::string server_addr);
+
+	void get();
+	void put();
+	void pwd();
+	void cd();
+	void dir();
+	void quit();
 };
 
 
