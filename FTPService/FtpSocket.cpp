@@ -36,6 +36,7 @@ void FtpSocket::send_command(FtpCommand& command)
 void FtpSocket::send_data(FtpData& data)
 {
 	FtpData_t* _data_t = (FtpData_t*)malloc(sizeof(_data_t) + data.data.size());
+	_data_t->data_type = data.data_type;
 	_data_t->data_length = data.data.size();
 	memcpy(_data_t->data, &data.data[0], _data_t->data_length);
 	std::vector<char> buff((char*)_data_t, _data_t->data + _data_t->data_length);
@@ -46,10 +47,16 @@ void FtpSocket::send_data(FtpData& data)
 FtpCommand FtpSocket::recv_command()
 {
 	std::vector<char> buff;
-	recv(buff);
-	command_buff.insert(command_buff.end(), buff.begin(), buff.end());
+	while (command_buff.size() < 2 * sizeof(int)) {
+		recv(buff);
+		command_buff.insert(command_buff.end(), buff.begin(), buff.end());
+	}
 	int len;
 	memcpy(&len, &command_buff[sizeof(int)], sizeof(int));
+	while (command_buff.size() < 2 * sizeof(int) + len) {
+		recv(buff);
+		command_buff.insert(command_buff.end(), buff.begin(), buff.end());
+	}
 	FtpCommand command;
 	memcpy(&command.command_type, &command_buff[0], sizeof(int));
 	command.data.insert(command.data.end(), command_buff.begin() + 2 * sizeof(int), 
@@ -62,12 +69,20 @@ FtpCommand FtpSocket::recv_command()
 FtpData FtpSocket::recv_data()
 {
 	std::vector<char> buff;
-	recv(buff);
-	data_buff.insert(data_buff.end(), buff.begin(), buff.end());
+	while (data_buff.size() < 2 * sizeof(int)) {
+		recv(buff);
+		data_buff.insert(data_buff.end(), buff.begin(), buff.end());
+	}
 	int len;
-	memcpy(&len, &command_buff[0], sizeof(int));
+	memcpy(&len, &command_buff[sizeof(int)], sizeof(int));
+	while (data_buff.size() < 2 * sizeof(int) + len) {
+		recv(buff);
+		data_buff.insert(data_buff.end(), buff.begin(), buff.end());
+	}
 	FtpData data;
-	data.data.insert(data.data.begin(), data_buff[sizeof(int)], data_buff[sizeof(int) + len]);
-	data_buff.erase(data_buff.begin(), data_buff.begin() + sizeof(int) + len);
+	memcpy(&data.data_type, &data_buff[0], sizeof(int));
+	data.data.insert(data.data.begin(), data_buff[2 * sizeof(int)], 
+					 data_buff[2 * sizeof(int) + len]);
+	data_buff.erase(data_buff.begin(), data_buff.begin() + 2 * sizeof(int) + len);
 	return data;
 }

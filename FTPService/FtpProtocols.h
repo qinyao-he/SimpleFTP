@@ -14,6 +14,7 @@ struct FtpCommand_t
 
 struct FtpData_t
 {
+	int data_type;
 	int data_length;
 	char data[0];
 };
@@ -27,6 +28,7 @@ struct FtpCommand
 
 struct FtpData
 {
+	int data_type;
 	std::vector<char> data;
 };
 
@@ -46,6 +48,8 @@ public:
 	static const int CD;
 	static const int HELP;
 	static const int QUIT;
+	static const int SUCCESS;
+	static const int ERROR;
 };
 
 
