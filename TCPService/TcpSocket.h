@@ -15,7 +15,7 @@ private:
 	SOCKADDR_IN m_client_addr;
 
 public:
-	TcpSocket(SOCKET socket, SOCKADDR_IN client_addr);
+	TcpSocket(SOCKET socket);
 	~TcpSocket();
 
 	void send(std::vector<char>& send_data);

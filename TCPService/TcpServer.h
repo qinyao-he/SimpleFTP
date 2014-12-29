@@ -2,8 +2,6 @@
 #define TCPSERVER_H
 
 #include "TcpAbstract.h"
-#include "TcpSocket.h"
-#include <WinSock2.h>
 
 
 class TcpServer : public TcpAbstract

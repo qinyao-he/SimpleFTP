@@ -3,6 +3,7 @@
 
 #include "../TCPService/TcpServer.h"
 #include "../TCPService/TcpSocket.h"
+#include "FtpProtocols.h"
 
 
 class FtpAbstract

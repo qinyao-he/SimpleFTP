@@ -12,11 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TcpAbstract.h" />
+    <ClInclude Include="TcpClient.h" />
     <ClInclude Include="TcpServer.h" />
     <ClInclude Include="TcpSocket.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TcpAbstract.cpp" />
+    <ClCompile Include="TcpClient.cpp" />
     <ClCompile Include="TcpServer.cpp" />
     <ClCompile Include="TcpSocket.cpp" />
   </ItemGroup>

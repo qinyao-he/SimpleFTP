@@ -30,5 +30,5 @@ TcpSocket TcpServer::accept()
 	SOCKADDR_IN _client_addr;
 	int len = sizeof(SOCKADDR);
 	SOCKET socket = ::accept(server_socket, (SOCKADDR*)&_client_addr, &len);
-	return TcpSocket(socket, _client_addr);
+	return TcpSocket(socket);
 }

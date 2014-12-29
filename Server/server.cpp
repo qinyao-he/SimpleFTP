@@ -4,5 +4,6 @@
 int main()
 {
 	FtpServer server;
+	server.listen(FtpProtocols::PORT_SERVER_COMMAND);
 	return 0;
 }

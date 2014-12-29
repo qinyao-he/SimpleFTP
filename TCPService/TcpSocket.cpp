@@ -1,10 +1,9 @@
 ﻿#include "TcpSocket.h"
 
 
-TcpSocket::TcpSocket(SOCKET socket, SOCKADDR_IN client_addr)
+TcpSocket::TcpSocket(SOCKET socket)
 {
 	m_socket = socket;
-	m_client_addr = client_addr;
 }
 
 
