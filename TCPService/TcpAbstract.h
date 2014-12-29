@@ -4,6 +4,9 @@
 
 class TcpAbstract
 {
+private:
+	static int num_instance;
+
 public:
 	TcpAbstract();
 	~TcpAbstract();

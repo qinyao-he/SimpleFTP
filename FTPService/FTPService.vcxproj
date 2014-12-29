@@ -13,12 +13,14 @@
   <ItemGroup>
     <ClInclude Include="FtpAbstract.h" />
     <ClInclude Include="FtpClient.h" />
+    <ClInclude Include="FtpProtocols.h" />
     <ClInclude Include="FtpServer.h" />
     <ClInclude Include="FtpServerWorker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FtpAbstract.cpp" />
     <ClCompile Include="FtpClient.cpp" />
+    <ClCompile Include="FtpProtocols.cpp" />
     <ClCompile Include="FtpServer.cpp" />
     <ClCompile Include="FtpServerWorker.cpp" />
   </ItemGroup>
