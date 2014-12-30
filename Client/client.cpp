@@ -21,8 +21,23 @@ int main()
 			std::cin >> local_file >> remote_file;
 			client.put(local_file, remote_file);
 		}
+		else if (command_str == "pwd") {
+			client.pwd();
+		}
+		else if (command_str == "cd") {
+			std::string s;
+			std::cin >> s;
+			client.cd(s);
+		}
+		else if (command_str == "dir") {
+			client.dir();
+		}
+		else if (command_str == "quit") {
+			client.quit();
+			break;
+		}
 		else {
-
+			std::cout << "Bad command." << std::endl;
 		}
 	}
 	return 0;

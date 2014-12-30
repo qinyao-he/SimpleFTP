@@ -74,3 +74,60 @@ void FtpClient::put(std::string local_file, std::string remote_file)
 		std::cout << "Put file failed." << std::endl;
 	}
 }
+
+
+void FtpClient::pwd()
+{
+	FtpCommand command;
+	command.command_type = FtpProtocols::PWD;
+	command_socket.send_command(command);
+	FtpData data = data_socket.recv_data();
+	if (data.data_type == FtpProtocols::SUCCESS) {
+		std::string result(data.data.begin(), data.data.end());
+		std::cout << result << std::endl;
+	}
+	else {
+		std::cout << "Error." << std::endl;
+	}
+}
+
+
+void FtpClient::dir()
+{
+	FtpCommand command;
+	command.command_type = FtpProtocols::DIR;
+	command_socket.send_command(command);
+	FtpData data = data_socket.recv_data();
+	if (data.data_type == FtpProtocols::SUCCESS) {
+		std::string result(data.data.begin(), data.data.end());
+		std::cout << result << std::endl;
+	}
+	else {
+		std::cout << "Error." << std::endl;
+	}
+}
+
+
+void FtpClient::cd(std::string cd_path)
+{
+	FtpCommand command;
+	command.command_type = FtpProtocols::CD;
+	command.data = std::vector<char>(cd_path.begin(), cd_path.end());
+	command_socket.send_command(command);
+	FtpData data = data_socket.recv_data();
+	if (data.data_type == FtpProtocols::SUCCESS) {
+		std::string result(data.data.begin(), data.data.end());
+		std::cout << result << std::endl;
+	}
+	else {
+		std::cout << "Error." << std::endl;
+	}
+}
+
+
+void FtpClient::quit()
+{
+	FtpCommand command;
+	command.command_type = FtpProtocols::QUIT;
+	command_socket.send_command(command);
+}

@@ -23,7 +23,7 @@ public:
 	void get(std::string remote_file, std::string local_file);
 	void put(std::string local_file, std::string remote_file);
 	void pwd();
-	void cd();
+	void cd(std::string cd_path);
 	void dir();
 	void quit();
 };

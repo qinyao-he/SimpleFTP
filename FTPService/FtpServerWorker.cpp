@@ -2,6 +2,7 @@
 #include "FtpProtocols.h"
 #include <iostream>
 #include <fstream>
+#include <streambuf>
 #include <string>
 
 
@@ -47,6 +48,11 @@ bool FtpServerWorker::write_file(std::string& file_path, std::vector<char>& data
 void FtpServerWorker::operator() (FtpSocket socket)
 {
 	std::string path = "";
+	system("cd > temp");
+	std::ifstream file("temp");
+	file >> path;
+	path += "\\";
+	file.close();
 	std::cout << "Client connected from: " + socket.get_remote_ip() << std::endl;
 	FtpCommand command = socket.recv_command();
 	if (command.command_type == FtpProtocols::PORT) {
@@ -59,7 +65,7 @@ void FtpServerWorker::operator() (FtpSocket socket)
 				command = socket.recv_command();
 			}
 			catch (int) {
-				std::cout << "Remote connection closed." << std::endl;
+				std::cout << "Client " + socket.get_remote_ip() + " disconnected." << std::endl;
 				break;
 			}
 			if (command.command_type == FtpProtocols::GET) {
@@ -80,15 +86,51 @@ void FtpServerWorker::operator() (FtpSocket socket)
 				client_socket.send_data(data);
 			}
 			else if (command.command_type == FtpProtocols::PWD) {
-
+				FtpData data;
+				data.data_type = FtpProtocols::SUCCESS;
+				data.data = std::vector<char>(path.begin(), path.end());
+				client_socket.send_data(data);
 			}
 			else if (command.command_type == FtpProtocols::DIR) {
-
+				std::ofstream outfile("help.bat");
+				outfile << "@echo off" << std::endl;
+				outfile << "cd " + path << std::endl;
+				outfile << "dir" << std::endl;
+				outfile.close();
+				system("help.bat > temp");
+				std::ifstream file("temp");
+				std::string result((std::istreambuf_iterator<char>(file)),
+									std::istreambuf_iterator<char>());
+				file.close();
+				remove("help.bat");
+				remove("temp");
+				FtpData data;
+				data.data_type = FtpProtocols::SUCCESS;
+				data.data = std::vector<char>(result.begin(), result.end());
+				client_socket.send_data(data);
 			}
 			else if (command.command_type == FtpProtocols::CD) {
-
+				std::string cd_path(command.data.begin(), command.data.end());
+				std::ofstream outfile("help.bat");
+				outfile << "@echo off" << std::endl;
+				outfile << "cd " + path << std::endl;
+				outfile << "cd " + cd_path << std::endl;
+				outfile << "cd" << std::endl;
+				outfile.close();
+				system("help.bat > temp");
+				std::ifstream file("temp");
+				file >> path;
+				path += "\\";
+				file.close();
+				remove("help.bat");
+				remove("temp");
+				FtpData data;
+				data.data_type = FtpProtocols::SUCCESS;
+				data.data = std::vector<char>(path.begin(), path.end());
+				client_socket.send_data(data);
 			}
 			else if (command.command_type == FtpProtocols::QUIT) {
+				std::cout << "Client " + socket.get_remote_ip() + " disconnected." << std::endl;
 				break;
 			}
 			else {
