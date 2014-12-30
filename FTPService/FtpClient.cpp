@@ -44,6 +44,7 @@ void FtpClient::get(std::string remote_file, std::string local_file)
 		}
 		file.write(&data.data[0], data.data.size());
 		file.close();
+		std::cout << "Successfully get file" << std::endl;
 	}
 	else {
 		std::cout << "Get file failed." << std::endl;
@@ -73,6 +74,9 @@ void FtpClient::put(std::string local_file, std::string remote_file)
 	data = data_socket.recv_data();
 	if (data.data_type == FtpProtocols::FAIL) {
 		std::cout << "Put file failed." << std::endl;
+	}
+	else {
+		std::cout << "Successfully put file" << std::endl;
 	}
 }
 
