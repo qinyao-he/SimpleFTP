@@ -53,6 +53,7 @@ void FtpServerWorker::operator() (FtpSocket socket)
 	file >> path;
 	path += "\\";
 	file.close();
+	remove("temp");
 	std::cout << "Client connected from: " + socket.get_remote_ip() << std::endl;
 	FtpCommand command = socket.recv_command();
 	if (command.command_type == FtpProtocols::PORT) {
