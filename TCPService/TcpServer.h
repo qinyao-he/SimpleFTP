@@ -13,7 +13,7 @@ public:
 	TcpServer();
 	~TcpServer();
 
-	void listen(int port);
+	bool listen(int port);
 	TcpSocket accept();
 };
 

@@ -11,7 +11,7 @@ TcpServer::~TcpServer()
 }
 
 
-void TcpServer::listen(int port)
+bool TcpServer::listen(int port)
 {
 	server_socket = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -20,8 +20,10 @@ void TcpServer::listen(int port)
 	addr.sin_addr.S_un.S_addr = htonl(INADDR_ANY);
 	addr.sin_port = htons(port);
 
-	bind(server_socket, (SOCKADDR*)&addr, sizeof(SOCKADDR));
+	if (bind(server_socket, (SOCKADDR*)&addr, sizeof(SOCKADDR)) != 0)
+		return false;
 	::listen(server_socket, 10);
+	return true;
 }
 
 

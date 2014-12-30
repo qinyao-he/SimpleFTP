@@ -17,7 +17,8 @@ void FtpClient::connect(std::string server_addr)
 {
 	int data_port = FtpProtocols::PORT_CLIENT_DATA;
 	command_socket = ftp_command_client.connect(server_addr, FtpProtocols::PORT_SERVER_COMMAND);
-	ftp_data_server.listen(data_port);
+	while (!ftp_data_server.listen(data_port))
+		data_port++;
 
 	FtpCommand command;
 	command.command_type = FtpProtocols::PORT;
